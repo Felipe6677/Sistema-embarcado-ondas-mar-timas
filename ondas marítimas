@@ -1,0 +1,35 @@
+import random
+import time
+
+# Função para simular a altura das ondas
+def obter_altura_onda():
+    # Simula a altura de ondas entre 0 e 2 metros
+    return random.uniform(0, 2)
+
+# Função para verificar se a altura da onda é perigosa
+def verificar_onda(altura):
+    LIMITE_PERIGOSO = 1.5  # Limite de altura para alerta
+    if altura >= LIMITE_PERIGOSO:
+        return True
+    return False
+
+# Função para exibir alertas
+def exibir_alerta():
+    print("ALERTA: As ondas estão perigosas! Evite se aproximar da água.")
+
+# Função principal para monitorar as ondas
+def monitorar_ondas():
+    while True:
+        altura_onda = obter_altura_onda()
+        print(f"Altura da onda: {altura_onda:.2f} metros")
+        
+        if verificar_onda(altura_onda):
+            exibir_alerta()
+        
+        # Aguardar 5 segundos antes de verificar novamente
+        time.sleep(5)
+
+# Iniciar o monitoramento das ondas
+if __name__ == "__main__":
+    print("Iniciando monitoramento das ondas...")
+    monitorar_ondas()
